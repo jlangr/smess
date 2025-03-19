@@ -1,27 +1,15 @@
-// nameNormalizer.unstyled.mjs
-
-export function normalizeName(name) {
+export const normalizeName = (name) => {
   console.log('unstyled')
-  let trimmedName = name.trim()
-  let hasSuffix = trimmedName.includes(',')
-  let suffix = ''
+  if (!name.trim()) return ''
 
-  if (hasSuffix) {
-    [trimmedName, suffix] = trimmedName.split(',')
-    suffix = ',' + suffix.trim()
-  }
+  const [main, suffix] = name.split(',').map(part => part.trim())
+  const parts = main.split(/\s+/).filter(Boolean)
 
-  let parts = trimmedName.split(/\s+/)
+  if (parts.length === 1) return parts[0]
 
-  if (parts.length === 1) {
-    return parts[0] + suffix
-  }
+  const [first, ...middles] = parts
+  const last = middles.pop()
+  const initials = middles.map(m => `${m[0]}.`).join(' ')
 
-  let lastName = parts.pop()
-  let firstName = parts.shift()
-  let middleInitials = parts.map(name => `${name.charAt(0)}.`).join(' ')
-
-  return `${lastName}, ${firstName} ${middleInitials}`.trim() + suffix
+  return [last + ',', first, initials, suffix].filter(Boolean).join(' ')
 }
-
-// why the "let"
