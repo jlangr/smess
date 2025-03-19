@@ -1,15 +1,24 @@
-export const normalizeName = (name) => {
-  console.log('unstyled')
-  if (!name.trim()) return ''
+// nameNormalizer.mjs
 
-  const [main, suffix] = name.split(',').map(part => part.trim())
-  const parts = main.split(/\s+/).filter(Boolean)
+export function normalizeName(name) {
+  let trimmedName = name.trim();
+  let hasSuffix = trimmedName.includes(',');
+  let suffix = '';
 
-  if (parts.length === 1) return parts[0]
+  if (hasSuffix) {
+    [trimmedName, suffix] = trimmedName.split(',');
+    suffix = ', ' + suffix.trim();  // Ensure space after comma for the suffix
+  }
 
-  const [first, ...middles] = parts
-  const last = middles.pop()
-  const initials = middles.map(m => `${m[0]}.`).join(' ')
+  let parts = trimmedName.split(/\s+/);
 
-  return [last + ',', first, initials, suffix].filter(Boolean).join(' ')
+  if (parts.length === 1) {
+    return parts[0] + suffix;
+  }
+
+  let lastName = parts.pop();
+  let firstName = parts.shift();
+  let middleInitials = parts.map(name => `${name.charAt(0)}.`).join(' ');
+
+  return `${lastName}, ${firstName} ${middleInitials}`.trim() + suffix;
 }
