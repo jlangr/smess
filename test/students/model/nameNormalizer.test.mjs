@@ -1,12 +1,15 @@
 import { normalizeName as normalizeNameUnstyled } from '../../../src/students/model/nameNormalizer.unstyled.mjs'
 import { normalizeName as normalizeNameStyled } from '../../../src/students/model/nameNormalizer.styled.mjs'
+import { normalizeName as normalizeNamePipeline } from '../../../src/students/model/nameNormalizer.pipeline.mjs'
 
-const funcs = [['styled', normalizeNameStyled], ['unstyled', normalizeNameUnstyled]]
+const funcs = [
+  ['styled', normalizeNameStyled],
+  ['unstyled', normalizeNameUnstyled],
+  ['pipeline', normalizeNamePipeline],
+]
 
 funcs.forEach(([description, normalizeName]) => {
-
-  describe('normalizeName', () => {
-    beforeEach(() => console.log(description))
+  describe(`${description}`, () => {
     it('handles mononyms', () => {
       expect(normalizeName('Plato')).toBe('Plato')
     })
