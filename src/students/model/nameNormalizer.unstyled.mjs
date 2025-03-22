@@ -18,7 +18,7 @@ export function normalizeName(name) {
 
   let lastName = parts.pop();
   let firstName = parts.shift();
-  let middleInitials = parts.map(name => `${name.charAt(0)}.`).join(' ');
+  let middleInitials = parts.map(name => name.length === 1 ? name : `${name.charAt(0)}.`).join(' ');
 
   return `${lastName}, ${firstName} ${middleInitials}`.trim() + suffix;
 }

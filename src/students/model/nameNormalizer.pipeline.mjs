@@ -27,7 +27,7 @@ const splitName = ({ name, suffix }) => {
 const initializeMiddleNames = parsed =>
   ({
     ...parsed,
-    middle: parsed.middle.map(n => `${n[0]}.`)
+    middle: parsed.middle.map(n => n.length === 1 ? n : `${n[0]}.`)
   })
 
 const formatParsedName = ({ first, middle, last, suffix }) =>

@@ -33,5 +33,9 @@ funcs.forEach(([description, normalizeName]) => {
     it('retains suffixes', () => {
       expect(normalizeName('Martin Luther King, Jr.')).toBe('King, Martin L., Jr.')
     })
+
+    it('does not initialize single-letter middle name', () => {
+      expect(normalizeName('Harry S Truman')).toBe('Truman, Harry S')
+    })
   })
 })

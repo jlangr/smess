@@ -20,7 +20,10 @@ const extractNameParts = ({ names, suffix }) =>
     : { first: names[0], middleInitials: extractMiddleInitials(names), last: names.at(-1), suffix }
 
 const extractMiddleInitials = names =>
-  names.slice(1, -1).map(getInitial).join(' ')
+  names.slice(1, -1).map(name => shouldInitialize(name) ? `${name[0]}.` : name).join(' ')
+
+const shouldInitialize = name =>
+  !(name.length === 1 || (name.length === 2 && name.endsWith('.')))
 
 const getInitial = name =>
   `${name[0]}.`
