@@ -1,5 +1,20 @@
 Score the game of bowling.
 
+A bowling game consists of ten frames. In each frame, the player has two opportunities to knock down ten pins.
+The score for the frame is the total number of pins knocked down.
+Bonuses are awarded for strikes and spares:
+Spare (all 10 pins knocked down in two rolls): scores 10 pins plus the value of the next roll.
+Strike (all 10 pins knocked down in one roll): scores 10 points plus the value of the next two rolls.
+
+In these CAX examples, each frame is separated by a semicolon (;). Rolls within a frame are separated by a comma (,).
+
+Use the following interface within a BowlingGame class:
+
+addRoll(pins: number): void // take on only a single roll at a time
+scoreGame(): number
+
+Examples:
+
 two rolls both gutter
 ==
 0, 0 => 0
