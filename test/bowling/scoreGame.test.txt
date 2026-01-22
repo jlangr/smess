@@ -1,0 +1,45 @@
+Score the game of bowling.
+
+two rolls both gutter
+==
+0, 0 => 0
+
+two rolls no marK
+==
+6, 3 => 9
+
+two frames no mark
+==
+5, 4; 7, 1 => 17
+
+spare
+==
+3, 7; 4 => 18
+
+full frame after spare
+==
+7, 3; 3, 2 => 18
+
+simple strike
+==
+10; 3, 6; => 28
+
+perfect game
+==
+10; 10; 10; 10; 10; 10; 10; 10; 10; 10, 10, 10 => 300
+
+extra ball in 10th frame after spare
+==
+0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 0, 0; 3, 7, 10 => 20
+
+sample game
+==
+1, 4; 4, 5; 6, 4; 5, 5; 10; 0, 1; 7, 3; 6, 4; 10; 2, 8, 6 => 133
+
+all but last ball
+==
+10; 10; 10; 10; 10; 10; 10; 10; 10; 10, 10, 9 => 299
+
+tenth frame spare
+==
+10; 10; 10; 10; 10; 10; 10; 10; 10; 9, 1, 2 => 272
