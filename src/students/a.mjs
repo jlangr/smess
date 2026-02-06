@@ -20,15 +20,18 @@ import dayjs from "dayjs";
 // };
 
 //for isEnabled function, returns true if the current date is between enabledDate and disableDate. either theres no disableDate or its in the future
-export const isEnabled = (enabledDate, disableDate) => {
-  const startOfToday = dayjs().startOf("day");
-  const startOfEnabledDate = dayjs(enabledDate).startOf("day");
-  console.log("startOfEnabledDate", startOfEnabledDate);
-  console.log("startOfToday", startOfToday);
-  return (
-    startOfEnabledDate.isBefore(startOfToday) ||
-    startOfEnabledDate.isSame(startOfToday) ||
-    (startOfEnabledDate.isSame(startOfToday) && !disableDate)
-  );
-};
-//test for push
+
+const isBeforeOrSame = (firstDate, secondDate) =>
+  firstDate.isBefore(secondDate) || firstDate.isSame(secondDate);
+
+export const isEnabled = (enabledDate, disabledDate) => {
+  const startOfToday = dayjs().startOf('day');
+  const startOfEnabledDate = dayjs(enabledDate).startOf('day');
+  const startOfDisabledDate = dayjs(disabledDate).startOf('day');
+
+  // return (startOfEnabledDate.isBefore(startOfToday) &&
+  //   (!disabledDate || startOfDisabledDate.isAfter(startOfToday))) ||
+  //   (startOfEnabledDate.isSame(startOfToday))
+  return (startOfEnabledDate.isBefore(startOfToday) || startOfEnabledDate.isSame(startOfToday)) &&
+      (!disabledDate || startOfDisabledDate.isAfter(startOfToday))
+}
