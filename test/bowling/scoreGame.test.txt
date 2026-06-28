@@ -19,7 +19,7 @@ two rolls both gutter
 ==
 0, 0 => 0
 
-two rolls no marK
+two rolls no mark
 ==
 6, 3 => 9
 

@@ -77,6 +77,6 @@ describe('BowlingGame scoring', () => {
     rollMany(game, [
       10,10,10,10,10,10,10,10,10,9,1,2
     ])
-    expect(game.scoreGame()).toBe(272)
+    expect(game.scoreGame()).toBe(271)
   })
 })
